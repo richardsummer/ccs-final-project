@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls', namespace='frontend')),
     # allows you to login/out of the browsable api
+    path('api/v1/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    # url(r'^rest-auth/', include('rest_auth.urls')),
 ]
