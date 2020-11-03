@@ -28,8 +28,15 @@ class Register extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        if(data.key) {
+          Cookies.set('Authorization', `Token ${data.key}`);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          this.props.handleAuth({isAuth: true});
+        }
       })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
     return this.setState({ error: '' });
   }

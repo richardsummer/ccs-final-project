@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
+    'localhost',
     'ccs-final-project-4verticals.herokuapp.com',
 ]
 
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'api.apps.ApiConfig',
     'frontend.apps.FrontendConfig',
+    'hottakes.apps.HottakesConfig',
 ]
 
 REST_FRAMEWORK = {

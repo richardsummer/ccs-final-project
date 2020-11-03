@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import Cookies from 'js-cookie';
 
 class Login extends Component {
   constructor() {
@@ -20,20 +20,34 @@ class Login extends Component {
     fetch('api/v1/rest-auth/login/' ,{
       method: 'POST',
       headers: {
+        'X-CSRFToken': Cookies.get('csrftoken'),
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(this.state),
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        if(data.key) {
+          Cookies.set('Authorization', `Token ${data.key}`);
+          localStorage.setItem('user', JSON.stringify(data.user));
+          this.props.handleAuth({isAuth: true});
+        }
       })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
     return this.setState({ error: '' });
   }
 
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value});
+  }
+
+  logout = () => {
+    // Cookies.remove('id', 'name', 'email');
+    // window.localStorage.clear();
+    // window.location.href = "http://127.0.0.1:3000/"
   }
 
   render() {
@@ -61,6 +75,8 @@ class Login extends Component {
 
           <input type="submit" value="Log In" data-test="submit" />
         </form>
+        <button type="button" onClick={this.logout}>Logout</button>
+
       </div>
     );
   }
