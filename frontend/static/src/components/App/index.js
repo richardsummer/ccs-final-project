@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Form from './../Hottakes/Form.js';
 import Register from './../Register';
@@ -31,6 +32,13 @@ class App extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchHottakes = this.fetchHottakes.bind(this);
+  }
+
+  fetchHottakes() {
+    fetch('/api/v1/hottakes/')
+      .then(response => response.json())
+      .then(data => this.setState({hottakes: data}));
   }
 
   handleSubmit(event) {
@@ -50,12 +58,6 @@ class App extends React.Component {
 
   handleChange(event) {
     this.setState({[event.target.name]: event.target.value});
-  }
-
-  componentDidMount() {
-    fetch('api/v1/hottakes/')
-    .then(response => response.json())
-    .then(data => this.setState({hottakes: data}));
   }
 
   handleAuth(isAuth) {
@@ -100,7 +102,8 @@ class App extends React.Component {
             <Route path='/register' render={(props) => <Register {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/login' render={(props) => <Login {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/hottakes/new' component={Form} />
-            <Route path='/hottakes/' component={Hottakes} />
+            <Route path='/hottakes/edit/:id' component={Form} />
+            <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
             <Route path='/about' render={About} />
           </Switch>
 

@@ -7,7 +7,7 @@ class Login extends Component {
     super();
     this.state = {
       username: '',
-    
+
       password: '',
     };
 
@@ -68,8 +68,6 @@ class Login extends Component {
           <label>User Name</label>
           <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required />
 
-
-
           <label>Password</label>
           <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
 
@@ -79,6 +77,22 @@ class Login extends Component {
           <p className="ml-auto">Don't have an account? <NavLink to="/register">Register</NavLink>.</p>
         </div>
       </div>
+        //----------------//
+      // </form
+      //   <div className="form-group">
+      //     <label htmlFor="exampleInputEmail1">Username</label>
+      //     <input type="text" className="form-control" name="username" value={this.state.username} onChange={this.handleChange} aria-describedby="emailHelp" placeholder="Enter Username" required />
+      //     <small id="emailHelp" className="form-text text-muted"></small>
+      //   </div>
+      //   <div className="form-group">
+      //     <label htmlFor="exampleInputPassword1">Password</label>
+      //     <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" required />
+      //   </div>
+      //   <div className="form-group form-check">
+      //   </div>
+      //   <input type="submit" className="btn btn-primary" value="Log In" data-test="submit">Submit</input>
+      //   <p className="ml-auto">Don't have an account? <NavLink to="/register">Register</NavLink>.</p>
+      // </form>
     );
   }
 }
