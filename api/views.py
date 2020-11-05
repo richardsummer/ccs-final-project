@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from hottakes.serializers import HottakeSerializer
+from rest_framework import generics
+from django.views.generic.edit import DeleteView
+from hottakes.models import Hottake
 
-# Create your views here.
+class HottakeListCreateApiView(generics.ListCreateAPIView):
+    queryset = Hottake.objects.all().order_by('-created_at')
+    serializer_class = HottakeSerializer
+
+    def perform_create(self, serializer):
+         serializer.save(author=self.request.user)

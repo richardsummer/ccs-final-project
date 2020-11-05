@@ -1,18 +1,19 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Nav(props) {
   return (
     <nav>
-      <h3>Logo</h3>
       <ul>
-        <li>About</li>
-        <li>Hot Takes</li>
-        <li>Episodes</li>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/hottakes">Hot Takes</NavLink>
+        <NavLink to="/episodes">Episodes</NavLink>
         {props.isAuth
         ? <button onClick={props.handleLogout}>Logout</button>
         :
-          <li>Login</li>
+          <NavLink to="/login">Login</NavLink>
       }
+        <NavLink to="/hottakes/new">New Post</NavLink>
       </ul>
     </nav>
   );

@@ -1,8 +1,11 @@
 import React from "react";
 import './App.css';
+import Form from './../Hottakes/Form.js';
 import Register from './../Register';
 import Login from './../Login';
+import About from './../About';
 import Nav from './../Nav';
+import Hottakes from './../Hottakes';
 
 import Cookies from 'js-cookie';
 
@@ -19,12 +22,41 @@ class App extends React.Component {
 
     this.state = {
       isAuth: !!Cookies.get('Authorization'),
+      hottakes: [],
+      title: '',
+      text: '',
     }
 
     this.handleAuth = this.handleAuth.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({text: this.state.text}),
+    }
+
+    fetch(`api/v1/hottakes/new/`, options)
+      .then(response => response.json())
+      .then(data => this.setState({hottakes: [data, ...this.state.hottakes], text: ''}));
+  }
+
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+  }
+
+  componentDidMount() {
+    fetch('api/v1/hottakes/')
+    .then(response => response.json())
+    .then(data => this.setState({hottakes: data}));
+  }
 
   handleAuth(isAuth) {
     // isAuth is an object, e.g. {isAuth: true}
@@ -67,6 +99,9 @@ class App extends React.Component {
             <Route path='/register' component={Register} />
             <Route path='/register' render={(props) => <Register {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/login' render={(props) => <Login {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
+            <Route path='/hottakes/new' component={Form} />
+            <Route path='/hottakes/' component={Hottakes} />
+            <Route path='/about' render={About} />
           </Switch>
 
         </React.Fragment>

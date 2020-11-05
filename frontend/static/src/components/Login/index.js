@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+import {NavLink} from 'react-router-dom';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      email: '',
+    
       password: '',
     };
 
@@ -67,16 +68,16 @@ class Login extends Component {
           <label>User Name</label>
           <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required />
 
-          <label>Email</label>
-          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required />
+
 
           <label>Password</label>
           <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
 
           <input type="submit" value="Log In" data-test="submit" />
         </form>
-        <button type="button" onClick={this.logout}>Logout</button>
-
+        <div className="d-flex align-items-baseline">
+          <p className="ml-auto">Don't have an account? <NavLink to="/register">Register</NavLink>.</p>
+        </div>
       </div>
     );
   }

@@ -5,4 +5,4 @@ class HottakeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Hottake
-        fields = ['id', 'title', 'body', 'posted']
+        fields = ['id', 'title', 'text', 'created_at']

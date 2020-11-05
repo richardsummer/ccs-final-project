@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cookies from 'js-cookie';
+import {NavLink} from 'react-router-dom';
 
 class Register extends Component {
   constructor() {
@@ -72,6 +73,10 @@ class Register extends Component {
           <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange} required />
           <input type="submit" value="Register" />
         </form>
+
+        <div className="d-flex align-items-baseline">
+          <p className="ml-auto">Already have an account? <NavLink to="/login">Login</NavLink>.</p>
+        </div>
       </div>
     );
   }
