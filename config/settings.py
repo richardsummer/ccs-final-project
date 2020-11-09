@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     # Local
     'accounts.apps.AccountsConfig',
     'api.apps.ApiConfig',
+    'episodes.apps.EpisodesConfig',
     'frontend.apps.FrontendConfig',
     'hottakes.apps.HottakesConfig',
 ]

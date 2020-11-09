@@ -4,6 +4,7 @@ import './App.css';
 import Form from './../Hottakes/Form.js';
 import Register from './../Register';
 import Login from './../Login';
+import Episodes from './../Episodes';
 import About from './../About';
 import Nav from './../Nav';
 import Hottakes from './../Hottakes';
@@ -105,6 +106,8 @@ class App extends React.Component {
             <Route path='/hottakes/edit/:id' component={Form} />
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
             <Route path='/about' render={About} />
+            <Route path='/' render={Episodes} />
+
           </Switch>
 
         </React.Fragment>
