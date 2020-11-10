@@ -107,9 +107,7 @@ class App extends React.Component {
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
             <Route path='/about' render={About} />
             <Route path='/' render={Episodes} />
-
           </Switch>
-
         </React.Fragment>
 
     );
