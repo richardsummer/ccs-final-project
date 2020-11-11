@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 class Hottake extends Component {
   render() {
     return(
-      <div>{this.props.hottake.text}</div>
+      <li>{this.props.hottake.text}</li>
     )
   }
 }
@@ -28,9 +28,9 @@ class Hottakes extends Component {
   render() {
     const hottakes = this.props.hottakes.map(hottake => <Hottake key={hottake.id} hottake={hottake} />)
     return(
-      <React.Fragment>
+      <ul>
         {hottakes}
-      </React.Fragment>
+      </ul>
     )
   }
 }
