@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+ul {
+  /* background-color: #FFFFFF; */
+  list-style: none;
+}
+
 .top-nav {
   background-color: #F8F9FA;
   /* color: red; */
@@ -19,6 +24,7 @@ code {
 
 .episodes {
   background-color: white;
+  border:
 }
 
 .notes {
