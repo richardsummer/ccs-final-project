@@ -28,6 +28,7 @@ const TopNav = (props) => {
               <NavLink href="/login" className="nav-item nav-link">Login</NavLink>
             }
               <NavLink href="/hottakes/new" className="nav-item nav-link">New Post</NavLink>
+              <NavLink href="/notes/new/" className="nav-item nav-link">New Note</NavLink>
           </Nav>
         </Collapse>
       </Navbar>

@@ -102,6 +102,7 @@ class App extends React.Component {
             <Route path='/register' component={Register} />
             <Route path='/register' render={(props) => <Register {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/login' render={(props) => <Login {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
+            <Route path='/notes/new' />
             <Route path='/hottakes/new' component={Form} />
             <Route path='/hottakes/edit/:id' component={Form} />
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
