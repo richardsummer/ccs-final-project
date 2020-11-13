@@ -4,7 +4,7 @@ import './App.css';
 import Form from './../Hottakes/Form.js';
 import Register from './../Register';
 import Login from './../Login';
-import Episodes from './../Episodes';
+import Episodes from './../Episodes/';
 import About from './../About';
 import Nav from './../Nav';
 import Hottakes from './../Hottakes';
@@ -99,15 +99,14 @@ class App extends React.Component {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            <Route path='/register' component={Register} />
             <Route path='/register' render={(props) => <Register {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/login' render={(props) => <Login {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/notes/new' />
             <Route path='/hottakes/new' component={Form} />
             <Route path='/hottakes/edit/:id' component={Form} />
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
-            <Route path='/about' render={About} />
-            <Route path='/' render={Episodes} />
+            <Route path='/about' component={About} />
+            <Route path='/' component={Episodes} />
           </Switch>
         </React.Fragment>
 

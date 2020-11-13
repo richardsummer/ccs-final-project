@@ -4,7 +4,8 @@ from django.views.generic.edit import DeleteView
 from hottakes.models import Hottake
 
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 import spotipy
 import spotipy.oauth2 as oauth2
 
@@ -45,13 +46,19 @@ AUTH_URL = 'https://accounts.spotify.com/api/token'
 #     return Response(show)
 
 @api_view(('GET',))
+@permission_classes([IsAuthenticatedOrReadOnly])
 def spotify_show_episodes(request):
+    # Spotify crendtials used to request an access token
     credentials = oauth2.SpotifyClientCredentials(
             client_id=os.environ['SPOTIFY_CLIENT_ID'],
             client_secret=os.environ['SPOTIFY_CLIENT_SECRET'],
             )
+    # Request access token
     token = credentials.get_access_token()
+    # Authenticate the app
     spotify = spotipy.Spotify(auth=token)
+    # Request the show episodes
     show_episodes = spotify.show_episodes('6Verqcb4xk7hVvEM2XCjkv', market="US")
-
+    # import pdb; pdb.set_trace()
+    # Return episodes to the client
     return Response(show_episodes)
