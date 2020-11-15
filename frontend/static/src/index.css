@@ -27,8 +27,12 @@ ul {
   border:
 }
 
-.notes {
+.episode {
+  border-style: solid;
+}
 
+.notes {
+  background-color: white;
 }
 
 /* ul {
