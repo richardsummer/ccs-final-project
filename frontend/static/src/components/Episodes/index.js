@@ -18,8 +18,6 @@ class Episodes extends Component {
     this.setState({episodes: data.items, currently_playing: data.items[0].id});
   }
 
-
-
   render() {
     const episodes = this.state.episodes.slice(1);
     const episodesHTML = episodes.map(episode => <div key={episode.id}>{episode.name}</div>)
@@ -32,9 +30,7 @@ class Episodes extends Component {
           <div className="row">
             <div className="col-5 border border-right-0 rounded-left border-dark episodes">
               <ul className="list-group">
-                  <li className="list-group-item list-group-item-primary">
-                    {episodesHTML}
-                  </li>
+                {episodesHTML}
               </ul>
             </div>
             <div className="col-7 border border-left-0 rounded-right border-dark notes">

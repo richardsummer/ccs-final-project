@@ -8,7 +8,6 @@ import Episodes from './../Episodes/';
 import About from './../About';
 import Nav from './../Nav';
 import Hottakes from './../Hottakes';
-
 import Cookies from 'js-cookie';
 
 import {
@@ -109,9 +108,9 @@ class App extends React.Component {
             <Route path='/' component={Episodes} />
           </Switch>
         </React.Fragment>
-
     );
   }
 }
+
 
 export default withRouter(App);

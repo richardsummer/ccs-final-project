@@ -17,8 +17,17 @@ ul {
   list-style: none;
 }
 
+.stadium {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
 .top-nav {
-  background-color: #F8F9FA;
+  /* background-color: black; */
   /* color: red; */
 }
 
