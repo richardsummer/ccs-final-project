@@ -1,27 +1,29 @@
 import React, {Component} from 'react';
-import {
-  Card, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle
-} from 'reactstrap';
+
+import { Card, CardColumns } from 'react-bootstrap';
 
 
 
 class Hottake extends Component {
   render() {
     return(
-      <li>{this.props.hottake.text}</li>
+      <Card style={{ width: '22rem' }}>
+        <Card.Body>
+          <Card.Title>{this.props.hottake.title}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+          <Card.Text>
+            {this.props.hottake.text}
+          </Card.Text>
+          <Card.Link href="#">Read More</Card.Link>
+        </Card.Body>
+      </Card>
+      // <li>{this.props.hottake.image}{this.props.hottake.title}{this.props.hottake.text}</li>
     )
   }
 }
 
 class Hottakes extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      hottakes: [],
-    }
-  }
 
   componentDidMount() {
     if(!this.props.hottakes.length) {
@@ -33,27 +35,14 @@ class Hottakes extends Component {
     const hottakes = this.props.hottakes.map(hottake => <Hottake key={hottake.id} hottake={hottake} />)
 
     return(
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-
-            <Card>
-              <CardBody>
-                <CardTitle tag="h5">Card title</CardTitle>
-                <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
-              </CardBody>
-              <img width="100%" src="/assets/318x180.svg" alt="Card cap" />
-              <CardBody>
-                <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                <CardLink href="#">Read More</CardLink>
-              </CardBody>
-            </Card>
-
-            <ul className="list-group">
+      <div className="container mt-5">
+        <CardColumns>
+          <div className="row">
+            <div className="col-12">
               {hottakes}
-            </ul>
+            </div>
           </div>
-        </div>
+        </CardColumns>
       </div>
     )
   }

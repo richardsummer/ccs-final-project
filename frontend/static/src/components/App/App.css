@@ -5,23 +5,19 @@ ul {
 }
 
 body {
-  background: rgb(13,13,13);
-  background: -webkit-linear-gradient(rgba(13,13,13,1) 7%, rgba(253,252,84,1) 80%);
-  background: -o-linear-gradient(rgba(13,13,13,1) 7%, rgba(253,252,84,1) 80%);
-  background: linear-gradient(rgba(13,13,13,1) 7%, rgba(253,252,84,1) 80%);
-  /* background-image: url(./field.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
-  /* position: absolute; */
   width: 100%;
 }
 
 .top-nav {
-  background-color: #0D0D0D;
-  color: #0D0D0D;
+  background-color: #232323;
+  color: #232323;
   position: relative;
 }
+
+/* .list-items {
+  background-color: black;
+  color: white;
+} */
 
 .page-footer {
  /* position: absolute; */
@@ -31,5 +27,5 @@ body {
 
 .card {
   /* color: red; */
-  background-color: red;
+  background-color: white;
 }

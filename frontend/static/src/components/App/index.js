@@ -10,6 +10,7 @@ import Nav from './../Nav';
 import Hottakes from './../Hottakes';
 import Cookies from 'js-cookie';
 
+
 import {
   Switch,
   Route,
@@ -94,6 +95,8 @@ class App extends React.Component {
 
     return (
         <React.Fragment>
+          <div className="top-line">
+          </div>
           <Nav isAuth={this.state.isAuth} handleLogout={this.handleLogout}/>
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}

@@ -26,18 +26,29 @@ ul {
   z-index: -1;
 }
 
+.top-line {
+  color: yellow;
+  background-color: yellow;
+  height: 7px;
+}
+
 .top-nav {
   background-color: #0D0D0D;
   /* color: red; */
+  height: 100px;
 }
 
 .page-footer {
-  background-color: #0D0D0D;
+  background-color: #232323;
 }
 
 .footer-copyright {
   background-color: #050505;
   color: #949494;
+}
+
+.list-items {
+  background-color: #232323;
 }
 
 .episodes {

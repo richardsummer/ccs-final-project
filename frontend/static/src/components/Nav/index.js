@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 // import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { FaFacebook } from "react-icons/fa";
+import { BsPeopleCircle } from "react-icons/bs";
 import {
   Collapse,
   Navbar,
@@ -49,7 +51,7 @@ const TopNav = (props) => {
           </Nav>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
-              Profile
+              <BsPeopleCircle id="profile-icon" width="150%"/>
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
