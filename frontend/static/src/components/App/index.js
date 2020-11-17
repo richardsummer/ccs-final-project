@@ -107,7 +107,21 @@ class App extends React.Component {
             <Route path='/about' component={About} />
             <Route path='/' component={Episodes} />
           </Switch>
+          <footer className="page-footer font-small unique-color-dark pt-4 mt-5">
+            <div class="container">
+
+              <ul className="list-unstyled list-inline text-center py-2">
+
+              </ul>
+
+
+            </div>
+
+            <div class="footer-copyright text-center py-3">© 2020 Copyright, 4 Verticals
+            </div>
+          </footer>
         </React.Fragment>
+
     );
   }
 }
