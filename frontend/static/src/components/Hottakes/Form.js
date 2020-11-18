@@ -59,37 +59,30 @@ class Form extends Component {
       });
   }
 
-  updatePost(evt) {
+  async updatePost(evt) {
     evt.preventDefault();
     const id = this.props.match.params.id;
-    fetch(`/api/v1/hottakes/${id}/` ,{
+    await fetch(`/api/v1/hottakes/${id}/` ,{
       method: 'PUT',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken'),
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({title: this.state.title, text: this.state.text}),
-    })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    });
+    this.props.history.push('/hottakes');
   }
 
-  removePost(){
+  async removePost(){
     const id = this.props.match.params.id;
-    fetch(`/api/v1/hottakes/${id}/` ,{
+    await fetch(`/api/v1/hottakes/${id}/` ,{
       method: 'DELETE',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken'),
       },
     })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    this.props.history.push('/hottakes');
+
   }
 
   componentDidMount() {

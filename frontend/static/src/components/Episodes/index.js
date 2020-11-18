@@ -2,17 +2,6 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Card, ListGroup } from 'react-bootstrap';
 
-// class EpisodeList extends Component {
-//   render () {
-//     return (
-//       <Card style={{ width: '18rem' }}>
-//         <ListGroup variant="flush">
-//           <ListGroup.Item>{this.props.episode.name}</ListGroup.Item>
-//         </ListGroup>
-//       </Card>
-//     )
-//   }
-// }
 
 class Episodes extends Component {
 
@@ -37,9 +26,8 @@ class Episodes extends Component {
     this.fetchNotes();
   }
 
-  async selectEpisode(episode) {
-    await this.setState({episode});
-    this.fetchNote();
+  selectEpisode(episode) {
+    this.setState({currently_playing: episode}, this.fetchNotes);
   }
 
   async fetchNotes() {
@@ -51,24 +39,29 @@ class Episodes extends Component {
 
 
   render() {
-    const episodes = this.state.episodes.filter(episode => episode.id !== this.state.currently_playing);
-    const episodesHTML = episodes.map(episode => <ListGroup.Item key={episode.id}>{episode.name}</ListGroup.Item>)
+    // const episodes = this.state.episodes.filter(episode => episode.id !== this.state.currently_playing);
+    const episodesHTML = this.state.episodes.map(episode => <ListGroup.Item className="episode-link" variant="light" key={episode.id} onClick={() => this.selectEpisode(episode.id)}>{episode.name}</ListGroup.Item>)
     const notes = this.state.notes.map(note => <div key={note.id}>{note.text}</div>);
 
     return(
       <React.Fragment>
         <div className="container pt-5" width="100%">
-          <div className="row">
-            <iframe src={`https://open.spotify.com/embed-podcast/episode/${this.state.currently_playing}`} title="player" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <div className="row player-box">
+            {this.state.currently_playing && <iframe src={`https://open.spotify.com/embed-podcast/episode/${this.state.currently_playing}`} title="player" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
           </div>
           <div className="row">
-            <div className="col-12">
-              <Card>
+            <div className="col-12 col-md-8 mt-3" variant="flush">
+              <ListGroup variant="flush">
+                <ListGroup.Item className="list-items">
+                  {notes}
+                </ListGroup.Item>
+              </ListGroup>
+            </div>
+            <ListGroup className="col-12 col-md-4 mt-3" variant="light">
                 <ListGroup.Item className="list-items">
                   {episodesHTML}
                 </ListGroup.Item>
-              </Card>
-            </div>
+            </ListGroup>
           </div>
         </div>
       </React.Fragment>

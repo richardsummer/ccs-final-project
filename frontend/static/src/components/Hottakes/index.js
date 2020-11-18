@@ -15,6 +15,7 @@ class Hottake extends Component {
             {this.props.hottake.text}
           </Card.Text>
           <Card.Link href="#">Read More</Card.Link>
+          <Card.Link href={`/hottakes/edit/${this.props.hottake.id}`}>Edit</Card.Link>
         </Card.Body>
       </Card>
       // <li>{this.props.hottake.image}{this.props.hottake.title}{this.props.hottake.text}</li>

@@ -9,7 +9,7 @@ import About from './../About';
 import Nav from './../Nav';
 import Hottakes from './../Hottakes';
 import Cookies from 'js-cookie';
-
+import Note from './../Episodes/Notes.js';
 
 import {
   Switch,
@@ -103,7 +103,7 @@ class App extends React.Component {
           <Switch>
             <Route path='/register' render={(props) => <Register {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/login' render={(props) => <Login {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
-            <Route path='/notes/new' />
+            <Route path='/notes/new' component={Note}/>
             <Route path='/hottakes/new' component={Form} />
             <Route path='/hottakes/edit/:id' component={Form} />
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
@@ -112,7 +112,14 @@ class App extends React.Component {
           </Switch>
           <footer className="page-footer font-small unique-color-dark pt-4 mt-5">
             <div class="container">
-
+              <div className="row">
+                <div className="col-12 social-bar">
+                  <i className="fab fa-facebook-f facebook-icon"></i>
+                  <i class="fab fa-instagram instagram-icon"></i>
+                  <i className="fab fa-twitter twitter-icon"></i>
+                  <i className="fab fa-spotify spotify-icon"></i>
+                </div>
+              </div>
               <ul className="list-unstyled list-inline text-center py-2">
 
               </ul>

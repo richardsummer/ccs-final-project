@@ -47,8 +47,8 @@ ul {
   color: #949494;
 }
 
-.list-items {
-  background-color: #232323;
+.login-form {
+  max-width: 50%;
 }
 
 .episodes {
@@ -62,6 +62,48 @@ ul {
 
 .notes {
   background-color: white;
+}
+
+.episode-link {
+  color: red;
+  background-color: #232323;
+}
+
+.facebook-icon {
+  color: #3351A3;
+  font-size: 50px;
+}
+
+.instagram-icon {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+}
+
+.spotify-icon {
+  color: #24D34E;
+  font-size: 50px;
+}
+
+.twitter-icon {
+  color: #1E8DEE;
+  font-size: 50px;
+}
+
+.user-icon {
+  color: white;
+  font-size: 25px;
+}
+
+.caret {
+  color: white;
+}
+
+.social-bar {
+  display: flex;
+  justify-content: space-around;
 }
 
 /* ul {

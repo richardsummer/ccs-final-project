@@ -11,4 +11,4 @@ class Hottake(models.Model):
     image = models.ImageField(upload_to='hottakes/', null=True)
 
     def __str__(self):
-        return self.text
+        return self.title

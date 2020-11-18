@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from .models import Note
-from .serializers import NoteSerializer
+from .models import Note, Episode
+from .serializers import NoteSerializer, EpisodeSerializer
 
 # Create your views here.
 class NoteListCreateApiView(generics.ListCreateAPIView):
@@ -14,3 +14,9 @@ class NoteListCreateApiView(generics.ListCreateAPIView):
     def get_queryset(self):
         # import pdb; pdb.set_trace()
         return Note.objects.filter(episode__show_id=self.kwargs['episode'])
+
+
+class EpisodeListCreateApiView(generics.ListCreateAPIView):
+    queryset = Episode.objects.all()
+    serializer_class = EpisodeSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly,]

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import {NavLink} from 'react-router-dom';
+import {Form, Button} from 'react-bootstrap';
 
 class Login extends Component {
   constructor() {
@@ -77,6 +78,35 @@ class Login extends Component {
           <p className="ml-auto">Don't have an account? <NavLink to="/register">Register</NavLink>.</p>
         </div>
       </div>
+      // <div className="container login-form pt-5 pb-5">
+      //   <Form onSubmit={this.handleSubmit}>
+      //   {
+      //         this.state.error &&
+      //         <h3 data-test="error" onClick={this.dismissError}>
+      //           <button onClick={this.dismissError}>✖</button>
+      //           {this.state.error}
+      //         </h3>
+      //       }
+      //     <Form.Group controlId="formBasicUsername">
+      //       <Form.Label>Username</Form.Label>
+      //       <Form.Control type="username" placeholder="Enter username" />
+      //     </Form.Group>
+      //
+      //     <Form.Group controlId="formBasicPassword">
+      //       <Form.Label>Password</Form.Label>
+      //       <Form.Control type="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required />
+      //     </Form.Group>
+      //     <Form.Group controlId="formBasicCheckbox">
+      //       <Form.Check type="checkbox" label="Check me out" />
+      //     </Form.Group>
+      //     <Button variant="primary" value="Log In" data-test="submit">
+      //       Login
+      //     </Button>
+      //     <Form.Text className="text-muted">
+      //       Don't have an account? <NavLink to="/register">Register</NavLink>.
+      //     </Form.Text>
+      //   </Form>
+      // </div>
     );
   }
 }

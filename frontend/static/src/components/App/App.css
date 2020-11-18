@@ -5,6 +5,7 @@ ul {
 }
 
 body {
+  background-color: #FEFF08;
   width: 100%;
 }
 
@@ -12,6 +13,20 @@ body {
   background-color: #232323;
   color: #232323;
   position: relative;
+}
+
+.player-box {
+  /* background-color: #232323; */
+}
+
+.list-items {
+  background-color: #232323;
+  color: #232323;
+}
+
+.episode-items {
+  background-color: #232323;
+  color: #232323;
 }
 
 /* .list-items {
