@@ -9,12 +9,12 @@ class Note extends Component {
     }
   }
 
-  async componentDidMount() {
-    const response = await fetch('/api/v1/episodes/');
-    const data = await response.json();
-    console.log(data);
-    this.setState({episodes: data.items});
-  }
+  // async componentDidMount() {
+  //   const response = await fetch('/api/v1/episodes/');
+  //   const data = await response.json();
+  //   console.log(data);
+  //   this.setState({episodes: data.items});
+  // }
 
 
   render() {

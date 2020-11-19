@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
+import {Form, Button} from 'react-bootstrap';
 
-class Form extends Component {
+class NewHotTake extends Component {
 
   constructor(props) {
     super(props);
@@ -96,32 +97,30 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.state.isEditing ? this.updatePost : this.createPost} className="col-md-10">
-        <div className="form-group">
-          <label htmlFor="title">Title for the Post:</label>
-          <input id="title" name="title" value={this.state.title}  onChange={this.handleChange}/>
-        </div>
+      <div className="container form-container mt-5 mb-5 pt-3 pb-3 border border-secondary rounded">
+        <Form onSubmit={this.state.isEditing ? this.updatePost : this.createPost} className="col-lg-12">
+            <Form.Control className="mb-3" placeholder="Title" size="lg" id="title" name="title" value={this.state.title} onChange={this.handleChange}/>
+            <Form.Group controlId="exampleForm.ControlTextarea1">
+              <Form.Control placeholder="Content" size="lg" id="text" name="text" value={this.state.text} onChange={this.handleChange} as="textarea" rows={15} />
+            </Form.Group>
 
-        <div className="form-group">
-          <label htmlFor="text">Content:</label>
-          <textarea id="text" name="text" value={this.state.text} onChange={this.handleChange} className="form-control" rows="7"cols="25"></textarea>
-        </div>
 
-        <input type="file" name="image" onChange={this.handleImage}/>
+          <Form.File className="mb-3" name="image" onChange={this.handleImage}/>
 
-        {this.state.isEditing
-          ?
-          <React.Fragment>
-            <button type="submit" className="btn btn-primary">Save</button>
-            <button type="button" onClick={this.removePost} className="btn btn-primary">Delete</button>
-          </React.Fragment>
-          :
-          <button type="submit" className="btn btn-primary">Create</button>
-        }
+          {this.state.isEditing
+            ?
+            <React.Fragment>
+              <Button type="submit" className="btn btn-primary" size="lg" block>Save</Button>
+              <Button type="button" onClick={this.removePost} variant="danger" size="lg" block>Delete</Button>
+            </React.Fragment>
+            :
+            <Button type="submit" className="btn btn-primary">Create</Button>
+          }
 
-      </form>
+        </Form>
+      </div>
     );
   }
 }
 
-export default Form;
+export default NewHotTake;

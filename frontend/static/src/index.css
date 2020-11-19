@@ -33,7 +33,8 @@ ul {
 }
 
 .top-nav {
-  background-color: #0D0D0D;
+  background-color: #222322;
+  color: #222322;
   /* color: red; */
   height: 100px;
 }
@@ -47,17 +48,27 @@ ul {
   color: #949494;
 }
 
+.player-box {
+  background-color: #222322;
+}
+
 .login-form {
   max-width: 50%;
 }
 
-.episodes {
+.form-container {
   background-color: white;
-  border:
 }
 
-.episode {
-  border-style: solid;
+/* .episodes {
+  background-color: #131313;
+  color: #131313;
+} */
+
+.episode-list {
+  /* border-style: solid; */
+  color: black;
+  background-color: black;
 }
 
 .notes {
@@ -65,8 +76,12 @@ ul {
 }
 
 .episode-link {
-  color: red;
-  background-color: #232323;
+  /* color: white; */
+}
+
+.football-icon {
+  color: white;
+  font-size: 40px;
 }
 
 .facebook-icon {
@@ -90,6 +105,10 @@ ul {
 .twitter-icon {
   color: #1E8DEE;
   font-size: 50px;
+}
+
+.sm {
+  font-size: 35px;
 }
 
 .user-icon {

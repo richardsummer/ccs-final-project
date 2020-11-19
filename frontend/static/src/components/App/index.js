@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-import Form from './../Hottakes/Form.js';
+import NewHotTake from './../Hottakes/Form.js';
 import Register from './../Register';
 import Login from './../Login';
 import Episodes from './../Episodes/';
@@ -104,20 +104,25 @@ class App extends React.Component {
             <Route path='/register' render={(props) => <Register {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/login' render={(props) => <Login {...props} isAuth={this.state.isAuth} handleAuth={ this.handleAuth } />} />
             <Route path='/notes/new' component={Note}/>
-            <Route path='/hottakes/new' component={Form} />
-            <Route path='/hottakes/edit/:id' component={Form} />
+            <Route path='/hottakes/new' component={NewHotTake} />
+            <Route path='/hottakes/edit/:id' component={NewHotTake} />
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
             <Route path='/about' component={About} />
             <Route path='/' component={Episodes} />
           </Switch>
           <footer className="page-footer font-small unique-color-dark pt-4 mt-5">
-            <div class="container">
+            <div className="container">
               <div className="row">
                 <div className="col-12 social-bar">
-                  <i className="fab fa-facebook-f facebook-icon"></i>
-                  <i class="fab fa-instagram instagram-icon"></i>
-                  <i className="fab fa-twitter twitter-icon"></i>
-                  <i className="fab fa-spotify spotify-icon"></i>
+                  <a href="https://www.instagram.com/4verticalspod/" target="_blank" rel="noreferrer">
+                    <i className="fab fa-instagram instagram-icon"></i>
+                  </a>
+                  <a href="https://twitter.com/4VerticalsPod" target="_blank" rel="noreferrer">
+                    <i className="fab fa-twitter twitter-icon"></i>
+                  </a>
+                  <a href="https://open.spotify.com/show/6Verqcb4xk7hVvEM2XCjkv" target="_blank" rel="noreferrer">
+                    <i className="fab fa-spotify spotify-icon"></i>
+                  </a>
                 </div>
               </div>
               <ul className="list-unstyled list-inline text-center py-2">
@@ -127,7 +132,7 @@ class App extends React.Component {
 
             </div>
 
-            <div class="footer-copyright text-center py-3">© 2020 Copyright, 4 Verticals
+            <div className="footer-copyright text-center py-3">© 2020 Copyright, 4 Verticals
             </div>
           </footer>
         </React.Fragment>

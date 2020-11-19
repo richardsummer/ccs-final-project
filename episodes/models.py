@@ -5,7 +5,7 @@ User = get_user_model();
 
 class Note(models.Model):
 
-    episode = models.ForeignKey('Episode', on_delete=models.CASCADE)
+    episode = models.ForeignKey('Episode', on_delete=models.CASCADE, null=True)
     text = models.TextField()
     timestamp = models.TimeField(default="00:00:00", blank=True, null=True)
 

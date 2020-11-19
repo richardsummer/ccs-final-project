@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Card, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
+import Cookies from 'js-cookie';
 
 
 class Episodes extends Component {
@@ -11,8 +12,10 @@ class Episodes extends Component {
       episodes: [],
       currently_playing: '',
       notes: [],
+      text: '',
     }
-
+    this.adminPostNote = this.adminPostNote.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.fetchNotes = this.fetchNotes.bind(this);
     this.selectEpisode = this.selectEpisode.bind(this);
   }
@@ -34,34 +37,51 @@ class Episodes extends Component {
     const response = await fetch(`/api/v1/episodes/${this.state.currently_playing}/notes/`);
     const data = await response.json();
     this.setState({notes: data});
+    console.log(this.state.currently_playing);
   }
 
+  async adminPostNote(e) {
+    e.preventDefault()
+    const episodeResponse = await fetch('/api/v1/episodes/');
+    const episodeData = await episodeResponse.json();
+    const episode = episodeData.filter(episode => episode.show_id === this.state.currently_playing)
+    console.log(episode)
+
+    const data = {text: this.state.text, episode: episode};
+    console.log(data)
+    const options = {
+      method:'POST',
+      headers: {
+        'X-CSRFToken': Cookies.get('csrftoken'),
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      };
+      const response = await fetch(`/api/v1/episodes/${this.state.currently_playing}/notes/`, options);
+      const responseData = await response.json();
+      console.log(responseData);
+  }
+
+  onChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+  }
 
 
   render() {
     // const episodes = this.state.episodes.filter(episode => episode.id !== this.state.currently_playing);
-    const episodesHTML = this.state.episodes.map(episode => <ListGroup.Item className="episode-link" variant="light" key={episode.id} onClick={() => this.selectEpisode(episode.id)}>{episode.name}</ListGroup.Item>)
+    const episodesHTML = this.state.episodes.map(episode => <ListGroup.Item className="pt-3 pb-3 border border-left-0 border-right-0 border-dark episode-link" action variant="secondary" key={episode.id} onClick={() => this.selectEpisode(episode.id)}>{episode.name}</ListGroup.Item>)
     const notes = this.state.notes.map(note => <div key={note.id}>{note.text}</div>);
 
     return(
       <React.Fragment>
         <div className="container pt-5" width="100%">
           <div className="row player-box">
-            {this.state.currently_playing && <iframe src={`https://open.spotify.com/embed-podcast/episode/${this.state.currently_playing}`} title="player" width="100%" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
+            {this.state.currently_playing && <iframe src={`https://open.spotify.com/embed-podcast/episode/${this.state.currently_playing}`} title="player" width="100%" height="232" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
           </div>
           <div className="row">
-            <div className="col-12 col-md-8 mt-3" variant="flush">
-              <ListGroup variant="flush">
-                <ListGroup.Item className="list-items">
-                  {notes}
-                </ListGroup.Item>
-              </ListGroup>
-            </div>
-            <ListGroup className="col-12 col-md-4 mt-3" variant="light">
-                <ListGroup.Item className="list-items">
-                  {episodesHTML}
-                </ListGroup.Item>
-            </ListGroup>
+            <ListGroup.Item className="episode-list col-lg-12 col-md-12 mt-3">
+                {episodesHTML}
+            </ListGroup.Item>
           </div>
         </div>
       </React.Fragment>
