@@ -10,6 +10,7 @@ import Nav from './../Nav';
 import Hottakes from './../Hottakes';
 import Cookies from 'js-cookie';
 import Note from './../Episodes/Notes.js';
+import { Button } from 'react-bootstrap';
 
 import {
   Switch,
@@ -68,7 +69,7 @@ class App extends React.Component {
 
   handleLogout() {
     console.log('here');
-    fetch('api/v1/rest-auth/logout/' ,{
+    fetch('/api/v1/rest-auth/logout/' ,{
       method: 'POST',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken'),
@@ -126,7 +127,7 @@ class App extends React.Component {
                 </div>
               </div>
               <ul className="list-unstyled list-inline text-center py-2">
-
+                <Button href="/login" className="btn btn-dark mt-3">Admin</Button>
               </ul>
 
 

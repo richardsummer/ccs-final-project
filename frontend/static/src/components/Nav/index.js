@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
+import { Button, Navbar, NavDropdown, Nav } from 'react-bootstrap';
 
 
 const TopNav = (props) => {
@@ -12,26 +12,26 @@ const TopNav = (props) => {
   // const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
-    <Navbar className="top-nav" variant="dark" expand="lg">
-      <a href="/">
-        <i className="pl-5 fas fa-football-ball football-icon"></i>
-      </a>
+    <Navbar className="my-nav" variant="dark" expand="lg">
+    <Navbar.Brand className="title-logo" href="/">4 VERTICALS PODCAST</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto pl-5">
           <Nav.Link href="/">Episodes</Nav.Link>
           <Nav.Link href="/hottakes/">Hot Takes</Nav.Link>
-          <Nav.Link href="/hottakes/new/">New Hot Take</Nav.Link>
+          {props.isAuth
+            ?
+            <React.Fragment>
+            <Nav.Link href="/hottakes/new/">New Hot Take</Nav.Link>
+            <Nav.Link href="/hottakes/new/">Add Show Notes</Nav.Link>
+            <Button onClick={props.handleLogout}>Logout</Button>
+            </React.Fragment>
+            :
+            null
+          }
+
         </Nav>
         <Nav className="pr-5">
-        <NavDropdown className="pr-3" title="Account" id="basic-nav-dropdown">
-        {props.isAuth
-                  ? <NavDropdown.Item onClick={props.handleLogout}>Logout</NavDropdown.Item>
-                  :
-                  <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-                }
-          <NavDropdown.Item href="/register">Sign-Up</NavDropdown.Item>
-        </NavDropdown>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
@@ -61,11 +61,11 @@ const TopNav = (props) => {
       //       </DropdownToggle>
       //       <DropdownMenu right>
       //         <DropdownItem>
-      //         {props.isAuth
-      //           ? <button onClick={props.handleLogout}>Logout</button>
-      //           :
-      //           <NavLink href="/login" className="nav-item nav-link">Login</NavLink>
-      //         }
+              // {props.isAuth
+              //   ? <button onClick={props.handleLogout}>Logout</button>
+              //   :
+              //   <NavLink href="/login" className="nav-item nav-link">Login</NavLink>
+              // }
       //         </DropdownItem>
       //         <DropdownItem>
       //           <NavLink href="/register" className="nav-item nav-link">Register</NavLink>

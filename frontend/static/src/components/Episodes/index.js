@@ -69,18 +69,27 @@ class Episodes extends Component {
 
   render() {
     // const episodes = this.state.episodes.filter(episode => episode.id !== this.state.currently_playing);
-    const episodesHTML = this.state.episodes.map(episode => <ListGroup.Item className="pt-3 pb-3 border border-left-0 border-right-0 border-dark episode-link" action variant="secondary" key={episode.id} onClick={() => this.selectEpisode(episode.id)}>{episode.name}</ListGroup.Item>)
-    const notes = this.state.notes.map(note => <div key={note.id}>{note.text}</div>);
+    const episodesHTML = this.state.episodes.map(episode => <ListGroup.Item className="pt-3 pb-3 border border-left-0 border-right-0 border-dark episode-link" action variant="dark" key={episode.id} onClick={() => this.selectEpisode(episode.id)}>{episode.name}</ListGroup.Item>)
+    const notes = this.state.notes.map(note =>
+      <div key={note.id} className="d-flex">
+        <strong className="pr-2">{note.timestamp}</strong>
+        <p>{note.text}</p>
+      </div>
+    );
 
     return(
       <React.Fragment>
         <div className="container pt-5" width="100%">
-          <div className="row player-box">
+          <div className="row player-box rounded">
             {this.state.currently_playing && <iframe src={`https://open.spotify.com/embed-podcast/episode/${this.state.currently_playing}`} title="player" width="100%" height="232" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>}
           </div>
           <div className="row">
-            <ListGroup.Item className="episode-list col-lg-12 col-md-12 mt-3">
+            <ListGroup.Item className="episode-list col-12 col-md-4 mt-3 border border-right-0 border-dark rounded-left">
                 {episodesHTML}
+            </ListGroup.Item>
+            <ListGroup.Item className="episode-list col-12 col-md-8 mt-3 border border-left-0 border-dark rounded-right">
+                <h3 className="mb-2">Show Notes</h3>
+                {notes}
             </ListGroup.Item>
           </div>
         </div>

@@ -41,17 +41,17 @@ class NewHotTake extends Component {
   createPost(evt) {
     evt.preventDefault();
 
+    const formData = new FormData();
+    formData.append('image', this.state.image);
+    formData.append('title', this.state.title);
+    formData.append('text', this.state.text);
+
     fetch('/api/v1/hottakes/' ,{
       method: 'POST',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken'),
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        title: this.state.title,
-        text: this.state.text,
-        image: this.state.image,
-      }),
+      body: formData,
     })
       .then(response => response.json())
       .then(data => console.log(data))
@@ -63,13 +63,20 @@ class NewHotTake extends Component {
   async updatePost(evt) {
     evt.preventDefault();
     const id = this.props.match.params.id;
+    const formData = new FormData()
+    formData.append('title', this.state.title);
+    formData.append('text', this.state.text);
+    // console.log('no image yet')
+    if(this.state.image) {
+      // console.log('image added');
+      formData.append('image', this.state.image);
+    }
     await fetch(`/api/v1/hottakes/${id}/` ,{
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
         'X-CSRFToken': Cookies.get('csrftoken'),
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({title: this.state.title, text: this.state.text}),
+      body: formData
     });
     this.props.history.push('/hottakes');
   }
@@ -98,14 +105,15 @@ class NewHotTake extends Component {
   render() {
     return (
       <div className="container form-container mt-5 mb-5 pt-3 pb-3 border border-secondary rounded">
-        <Form onSubmit={this.state.isEditing ? this.updatePost : this.createPost} className="col-lg-12">
+        <Form onSubmit={this.state.isEditing ? this.updatePost : this.createPost} className="col-lg-12 pt-5 pb-5 pr-5 pl-5">
+            <Form.Label className="fine-print">Title</Form.Label>
             <Form.Control className="mb-3" placeholder="Title" size="lg" id="title" name="title" value={this.state.title} onChange={this.handleChange}/>
+            <Form.Label className="fine-print">Body</Form.Label>
             <Form.Group controlId="exampleForm.ControlTextarea1">
               <Form.Control placeholder="Content" size="lg" id="text" name="text" value={this.state.text} onChange={this.handleChange} as="textarea" rows={15} />
             </Form.Group>
 
-
-          <Form.File className="mb-3" name="image" onChange={this.handleImage}/>
+          <Form.File className="btn mb-3" name="image" onChange={this.handleImage} />
 
           {this.state.isEditing
             ?
@@ -114,7 +122,7 @@ class NewHotTake extends Component {
               <Button type="button" onClick={this.removePost} variant="danger" size="lg" block>Delete</Button>
             </React.Fragment>
             :
-            <Button type="submit" className="btn btn-primary">Create</Button>
+            <Button type="submit" className="btn btn-primary" size="lg" block>Create</Button>
           }
 
         </Form>

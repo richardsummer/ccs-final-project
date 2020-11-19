@@ -26,10 +26,18 @@ ul {
   z-index: -1;
 }
 
+.main {
+  color: #B9BCBF;
+}
+
 .top-line {
   color: yellow;
   background-color: yellow;
   height: 7px;
+}
+
+.my-nav {
+  background-color: #222322;
 }
 
 .top-nav {
@@ -60,6 +68,18 @@ ul {
   background-color: white;
 }
 
+.login-container {
+  background-color: white;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.fine-print {
+  font-size: 20px;
+}
+
 /* .episodes {
   background-color: #131313;
   color: #131313;
@@ -69,6 +89,7 @@ ul {
   /* border-style: solid; */
   color: black;
   background-color: black;
+  font-size: 20px;
 }
 
 .notes {
@@ -80,13 +101,21 @@ ul {
 }
 
 .football-icon {
-  color: white;
+  color: #FEFF08;
   font-size: 40px;
+}
+/*
+.football-icon:hover {
+
+} */
+
+.title-logo {
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .facebook-icon {
   color: #3351A3;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 .instagram-icon {
@@ -94,17 +123,17 @@ ul {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 .spotify-icon {
   color: #24D34E;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 .twitter-icon {
   color: #1E8DEE;
-  font-size: 50px;
+  font-size: 60px;
 }
 
 .sm {
