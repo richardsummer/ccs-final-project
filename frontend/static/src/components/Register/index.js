@@ -34,6 +34,7 @@ class Register extends Component {
           Cookies.set('Authorization', `Token ${data.key}`);
           localStorage.setItem('user', JSON.stringify(data.user));
           this.props.handleAuth({isAuth: true});
+          this.props.history.push('/hottakes/');
         }
       })
       .catch((error) => {
@@ -48,37 +49,8 @@ class Register extends Component {
   }
 
   render() {
-    // NOTE: I use data-attributes for easier E2E testing
-    // but you don't need to target those (any css-selector will work)
 
     return (
-      // <div className="container register-container">
-      //   <form onSubmit={this.handleSubmit}>
-      //     {
-      //       this.state.error &&
-      //       <h3 data-test="error" onClick={this.dismissError}>
-      //         <button onClick={this.dismissError}>✖</button>
-      //         {this.state.error}
-      //       </h3>
-      //     }
-      //     <label>User Name</label>
-      //     <input type="text" name="username" value={this.state.username} onChange={this.handleChange} required />
-      //
-      //     <label>Email</label>
-      //     <input type="text" name="email" value={this.state.email} onChange={this.handleChange} required />
-      //
-      //     <label>Password1</label>
-      //     <input type="password" name="password1" value={this.state.password1} onChange={this.handleChange} required />
-      //
-      //     <label>Password2</label>
-      //     <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange} required />
-      //     <input type="submit" value="Register" />
-      //   </form>
-      //
-      //   <div className="d-flex align-items-baseline">
-      //     <p className="ml-auto">Already have an account? <NavLink to="/login">Login</NavLink>.</p>
-      //   </div>
-      // </div>
 
       <div className="container login-container border border-dark rounded mt-5 mb-5 pt-5 pb-5 pl-5 pr-5">
         <Form onSubmit={this.handleSubmit}>

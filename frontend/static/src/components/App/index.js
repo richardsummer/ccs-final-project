@@ -107,7 +107,7 @@ class App extends React.Component {
             <Route path='/notes/new' component={Note}/>
             <Route path='/hottakes/new' component={NewHotTake} />
             <Route path='/hottakes/edit/:id' component={NewHotTake} />
-            <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} />} />
+            <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} isAuth={this.state.isAuth} />} />
             <Route path='/about' component={About} />
             <Route path='/' component={Episodes} />
           </Switch>
@@ -115,15 +115,6 @@ class App extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-12 social-bar">
-                  <a href="https://www.instagram.com/4verticalspod/" target="_blank" rel="noreferrer">
-                    <i className="fab fa-instagram instagram-icon"></i>
-                  </a>
-                  <a href="https://twitter.com/4VerticalsPod" target="_blank" rel="noreferrer">
-                    <i className="fab fa-twitter twitter-icon"></i>
-                  </a>
-                  <a href="https://open.spotify.com/show/6Verqcb4xk7hVvEM2XCjkv" target="_blank" rel="noreferrer">
-                    <i className="fab fa-spotify spotify-icon"></i>
-                  </a>
                 </div>
               </div>
               <ul className="list-unstyled list-inline text-center py-2">

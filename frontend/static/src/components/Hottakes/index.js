@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Button, Card, CardColumns, Container, Jumbotron, Modal } from 'react-bootstrap';
+import { Button, Card, CardColumns, Modal } from 'react-bootstrap';
 
 
 
@@ -26,23 +26,14 @@ handleClose() {
   render() {
     return(
       <React.Fragment>
-      <Card style={{ width: '22rem' }}>
+      <Card className="border border-secondary rounded" style={{ width: '22rem' }}>
       <Card.Img variant="top" src={this.props.hottake.image} />
         <Card.Body>
           <Card.Title>{this.props.hottake.title}</Card.Title>
           <Card.Text>
           </Card.Text>
-          {this.props.isAuth
-            ?
-            <React.Fragment>
-              <Button className="btn btn-primary" onClick={this.handleShow}>Read More</Button>
-              <Button className="btn btn-warning" href={`/hottakes/edit/${this.props.hottake.id}`}>Edit</Button>
-            </React.Fragment>
-            :
-            <Button className="btn btn-primary" onClick={this.handleShow}>Read More</Button>
-          }
           <Button className="btn btn-primary" onClick={this.handleShow}>Read More</Button>
-          <Button className="btn btn-warning" href={`/hottakes/edit/${this.props.hottake.id}`}>Edit</Button>
+          {this.props.isAuth && <Button className="btn btn-warning ml-3" href={`/hottakes/edit/${this.props.hottake.id}`}>Edit</Button>}
         </Card.Body>
       </Card>
       <Modal
@@ -79,15 +70,10 @@ class Hottakes extends Component {
   }
 
   render() {
-    const hottakes = this.props.hottakes.map(hottake => <Hottake key={hottake.id} hottake={hottake} />)
+    const hottakes = this.props.hottakes.map(hottake => <Hottake key={hottake.id} hottake={hottake} isAuth={this.props.isAuth} />)
 
     return(
       <div className="container mt-5">
-        <Jumbotron fluid>
-          <Container>
-            <h1>Hot Takes</h1>
-          </Container>
-        </Jumbotron>
         <CardColumns>
           <div className="row">
             <div className="col-12">

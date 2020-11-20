@@ -67,7 +67,7 @@ class NewHotTake extends Component {
     formData.append('title', this.state.title);
     formData.append('text', this.state.text);
     // console.log('no image yet')
-    if(this.state.image) {
+    if(this.state.image && typeof(this.state.image)!=="string") {
       // console.log('image added');
       formData.append('image', this.state.image);
     }
@@ -118,11 +118,11 @@ class NewHotTake extends Component {
           {this.state.isEditing
             ?
             <React.Fragment>
-              <Button type="submit" className="btn btn-primary" size="lg" block>Save</Button>
-              <Button type="button" onClick={this.removePost} variant="danger" size="lg" block>Delete</Button>
+              <Button type="submit" className="btn btn-primary ml-5" size="lg">Save</Button>
+              <Button type="button" className="btn btn-danger ml-3" onClick={this.removePost} variant="danger" size="lg">Delete</Button>
             </React.Fragment>
             :
-            <Button type="submit" className="btn btn-primary" size="lg" block>Create</Button>
+            <Button type="submit" className="btn btn-primary ml-5" size="lg">Create</Button>
           }
 
         </Form>

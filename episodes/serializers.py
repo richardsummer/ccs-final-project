@@ -6,7 +6,7 @@ class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
         depth = 1
-        fields = '__all__'
+        fields = ['episode', 'text', 'timestamp']
 
 
 class EpisodeSerializer(serializers.ModelSerializer):

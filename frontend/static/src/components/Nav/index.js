@@ -23,7 +23,6 @@ const TopNav = (props) => {
             ?
             <React.Fragment>
             <Nav.Link href="/hottakes/new/">New Hot Take</Nav.Link>
-            <Nav.Link href="/hottakes/new/">Add Show Notes</Nav.Link>
             <Button onClick={props.handleLogout}>Logout</Button>
             </React.Fragment>
             :
@@ -31,7 +30,16 @@ const TopNav = (props) => {
           }
 
         </Nav>
-        <Nav className="pr-5">
+        <Nav className="social-bar pr-5">
+          <a href="https://www.instagram.com/4verticalspod/" target="_blank" rel="noreferrer">
+            <i className="mr-3 fab fa-instagram instagram-icon"></i>
+          </a>
+          <a href="https://twitter.com/4VerticalsPod" target="_blank" rel="noreferrer">
+            <i className="mr-3 fab fa-twitter twitter-icon"></i>
+          </a>
+          <a href="https://open.spotify.com/show/6Verqcb4xk7hVvEM2XCjkv" target="_blank" rel="noreferrer">
+            <i className="mr-3 fab fa-spotify spotify-icon"></i>
+          </a>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

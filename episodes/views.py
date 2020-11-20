@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
@@ -14,6 +14,11 @@ class NoteListCreateApiView(generics.ListCreateAPIView):
     def get_queryset(self):
         # import pdb; pdb.set_trace()
         return Note.objects.filter(episode__show_id=self.kwargs['episode'])
+
+    def perform_create(self, serializer):
+        # import pdb; pdb.set_trace()
+        episode = get_object_or_404(Episode, show_id=self.kwargs['episode'])
+        serializer.save(episode=episode)
 
 
 class EpisodeListCreateApiView(generics.ListCreateAPIView):

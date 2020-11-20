@@ -33,6 +33,7 @@ class Login extends Component {
           Cookies.set('Authorization', `Token ${data.key}`);
           localStorage.setItem('user', JSON.stringify(data.user));
           this.props.handleAuth({isAuth: true});
+          this.props.history.push('/hottakes/');
         }
       })
       .catch((error) => {

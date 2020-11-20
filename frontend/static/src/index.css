@@ -81,24 +81,29 @@ ul {
 }
 
 /* .episodes {
-  background-color: #131313;
-  color: #131313;
+  background-color: red;
+  color: red;
 } */
 
 .episode-list {
   /* border-style: solid; */
   color: black;
-  background-color: black;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .notes {
   background-color: white;
 }
 
-.episode-link {
-  /* color: white; */
+.notes-title {
+  font-family: 'Saira Condensed', sans-serif;
+  font-size: 40px;
+  text-align: center;
 }
+
+/* .episode-link {
+  color: white;
+} */
 
 .football-icon {
   color: #FEFF08;
@@ -113,9 +118,21 @@ ul {
   font-family: 'Saira Condensed', sans-serif;
 }
 
+@media only screen and (max-width: 991px) {
+  .instagram-icon {
+    display: none;
+  }
+  .twitter-icon {
+    display: none;
+  }
+  .spotify-icon {
+    display: none;
+  }
+}
+
 .facebook-icon {
   color: #3351A3;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 .instagram-icon {
@@ -123,17 +140,17 @@ ul {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 60px;
+  font-size: 35px;
 }
 
 .spotify-icon {
   color: #24D34E;
-  font-size: 60px;
+  font-size: 32px;
 }
 
 .twitter-icon {
   color: #1E8DEE;
-  font-size: 60px;
+  font-size: 35px;
 }
 
 .sm {
@@ -158,3 +175,23 @@ ul {
   float: right;
   width: 20%;
 } */
+
+
+.without_ampm::-webkit-datetime-edit-ampm-field {
+   display: none;
+ }
+ input[type=time]::-webkit-clear-button {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -o-appearance: none;
+   -ms-appearance:none;
+   appearance: none;
+   margin: -10px;
+ }
+
+ button.no-border {
+   background: none!important;
+   /* border-left: none!important; */
+   border-left: 1px solid transparent !important;
+   border-right: 1px solid transparent !important;
+ }
