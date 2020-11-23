@@ -20,6 +20,10 @@ class NoteListCreateApiView(generics.ListCreateAPIView):
         episode = get_object_or_404(Episode, show_id=self.kwargs['episode'])
         serializer.save(episode=episode)
 
+class NoteDetailApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly,]
 
 class EpisodeListCreateApiView(generics.ListCreateAPIView):
     queryset = Episode.objects.all()

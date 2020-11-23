@@ -22,8 +22,9 @@ const TopNav = (props) => {
           {props.isAuth
             ?
             <React.Fragment>
-            <Nav.Link href="/hottakes/new/">New Hot Take</Nav.Link>
-            <Button onClick={props.handleLogout}>Logout</Button>
+              <Nav.Link href="/hottakes/new/">New Hot Take</Nav.Link>
+              <Nav.Link href="/notes/new">New Show Note</Nav.Link>
+              <Button onClick={props.handleLogout}>Logout</Button>
             </React.Fragment>
             :
             null

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { ListGroup } from 'react-bootstrap';
+import { Button, ListGroup } from 'react-bootstrap';
 import Cookies from 'js-cookie';
 
 
@@ -90,7 +90,9 @@ class Episodes extends Component {
             <ListGroup.Item className="episode-list col-12 col-md-8 mt-3 border border-dark rounded">
                 <h3 className="notes-title mb-2">SHOW NOTES</h3>
                 {notes}
+                {this.props.isAuth && <Button className="btn btn-warning" href={`/notes/edit${this.props.note.id}`}>Edit</Button>}
             </ListGroup.Item>
+
           </div>
         </div>
       </React.Fragment>

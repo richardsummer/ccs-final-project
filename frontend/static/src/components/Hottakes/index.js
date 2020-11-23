@@ -24,6 +24,10 @@ handleClose() {
     this.setState({show: true})
   }
   render() {
+
+    const text = this.props.hottake.text
+      .split('\n')
+      .map(str => str ? <p>{str}</p> : <br/>);
     return(
       <React.Fragment>
       <Card className="border border-secondary rounded" style={{ width: '22rem' }}>
@@ -46,7 +50,7 @@ handleClose() {
           <Modal.Title>{this.props.hottake.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {this.props.hottake.text}
+          {text}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={this.handleClose}>
