@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Button, Card, CardColumns, Modal } from 'react-bootstrap';
+import { Button, Card, CardColumns, ListGroup, Modal } from 'react-bootstrap';
 
 
 
@@ -30,16 +30,16 @@ handleClose() {
       .map(str => str ? <p>{str}</p> : <br/>);
     return(
       <React.Fragment>
-      <Card className="border border-secondary rounded" style={{ width: '22rem' }}>
-      <Card.Img variant="top" src={this.props.hottake.image} />
-        <Card.Body>
-          <Card.Title>{this.props.hottake.title}</Card.Title>
-          <Card.Text>
-          </Card.Text>
-          <Button className="btn btn-primary" onClick={this.handleShow}>Read More</Button>
-          {this.props.isAuth && <Button className="btn btn-warning ml-3" href={`/hottakes/edit/${this.props.hottake.id}`}>Edit</Button>}
-        </Card.Body>
-      </Card>
+        <Card className="hottake-cards border border-secondary rounded" style={{ width: '22rem' }}>
+        <Card.Img variant="top" src={this.props.hottake.image} />
+          <Card.Body>
+            <Card.Title>{this.props.hottake.title}</Card.Title>
+            <Card.Text>
+            </Card.Text>
+            <Button className="btn btn-primary" onClick={this.handleShow}>Read More</Button>
+            {this.props.isAuth && <Button className="btn btn-warning ml-3" href={`/hottakes/edit/${this.props.hottake.id}`}>Edit</Button>}
+          </Card.Body>
+        </Card>
       <Modal
         show={this.state.show}
         onHide={this.handleClose}
