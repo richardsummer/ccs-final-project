@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Button, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 import Cookies from 'js-cookie';
 
 
@@ -62,18 +62,37 @@ class Episodes extends Component {
       console.log(responseData);
   }
 
+  async removeNote(note){
+    // remove the note from the UI
+    const notes = [...this.state.notes];
+    const index = notes.indexOf(note);
+    notes.splice(index, 1);
+    this.setState({notes});
+
+    // remove the note from the database
+    await fetch(`/api/v1/episodes/${note.episode}/notes/${note.id}/` ,{
+      method: 'DELETE',
+      headers: {
+        'X-CSRFToken': Cookies.get('csrftoken'),
+      },
+    })
+    // this.props.history.push('episodes/');
+  }
+
   onChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }
 
 
   render() {
-    // const episodes = this.state.episodes.filter(episode => episode.id !== this.state.currently_playing);
     const episodesHTML = this.state.episodes.map(episode => <ListGroup.Item className="font-weight-bold pt-3 pb-3 border no-border" action variant="dark" key={episode.id} onClick={() => this.selectEpisode(episode.id)}>{episode.name}</ListGroup.Item>)
     const notes = this.state.notes.map(note =>
       <div key={note.id} className="d-flex">
+
         <strong className="pr-2">{note.timestamp}</strong>
         <p>{note.text}</p>
+        {this.props.isAuth && <button type="button" className="ml-auto" onClick={() => this.removeNote(note)}>✖</button>}
+
       </div>
     );
 
@@ -90,9 +109,7 @@ class Episodes extends Component {
             <ListGroup.Item className="episode-list col-12 col-md-8 mt-3 border border-dark rounded">
                 <h3 className="notes-title mb-2">SHOW NOTES</h3>
                 {notes}
-                {this.props.isAuth && <Button className="btn btn-warning" href={`/notes/edit${this.props.note.id}`}>Edit</Button>}
             </ListGroup.Item>
-
           </div>
         </div>
       </React.Fragment>

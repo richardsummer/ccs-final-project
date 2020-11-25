@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Note, Episode
 
 class NoteSerializer(serializers.ModelSerializer):
+    episode = serializers.PrimaryKeyRelatedField(source='episode.show_id', read_only=True)
 
     class Meta:
         model = Note

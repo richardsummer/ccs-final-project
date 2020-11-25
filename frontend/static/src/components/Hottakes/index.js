@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import { Button, Card, CardColumns, ListGroup, Modal } from 'react-bootstrap';
+import { Button, Card, CardColumns, Modal } from 'react-bootstrap';
 
 
 

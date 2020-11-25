@@ -109,7 +109,7 @@ class App extends React.Component {
             <Route path='/hottakes/edit/:id' component={NewHotTake} />
             <Route path='/hottakes' render={(props) => <Hottakes {...props} hottakes={this.state.hottakes} fetchHottakes={this.fetchHottakes} isAuth={this.state.isAuth} />} />
             <Route path='/about' component={About} />
-            <Route path='/' component={Episodes} />
+            <Route path='/' render={(props) => <Episodes {...props} isAuth={this.state.isAuth} />} />
           </Switch>
           <footer className="page-footer font-small unique-color-dark pt-4 mt-5">
             <div className="container">
@@ -120,10 +120,7 @@ class App extends React.Component {
               <ul className="list-unstyled list-inline text-center py-2">
                 <Button href="/login" className="btn btn-dark mt-3">Admin</Button>
               </ul>
-
-
             </div>
-
             <div className="footer-copyright text-center py-3">© 2020 Copyright, 4 Verticals
             </div>
           </footer>
